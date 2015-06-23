@@ -6,7 +6,7 @@ import javax.ws.rs.Produces;
 
 import org.codehaus.jettison.json.JSONArray;
 
-@Path("/membros")
+@Path("/membro")
 public class MembroServico {
 
 	@GET
@@ -14,5 +14,4 @@ public class MembroServico {
 	public JSONArray lista() {
 		return null;
 	}
-
 }

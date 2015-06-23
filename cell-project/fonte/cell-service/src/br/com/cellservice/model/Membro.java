@@ -1,9 +1,12 @@
 package br.com.cellservice.model;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Membro {
 	private int id;
 	private String nome;
-	private String endereço;
+	private String endereco;
 	private String funcao;
 	private boolean discipulado;
 	private boolean encontro;
@@ -15,6 +18,10 @@ public class Membro {
 	private boolean consolidacaoPasso6;
 	private boolean consolidacaoPasso7;
 
+	@ManyToOne
+	@JoinColumn(name="celula_id")
+	private Celula celula;
+	
 	public int getId() {
 		return id;
 	}
@@ -31,12 +38,12 @@ public class Membro {
 		this.nome = nome;
 	}
 
-	public String getEndereço() {
-		return endereço;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setEndereço(String endereço) {
-		this.endereço = endereço;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getFuncao() {
