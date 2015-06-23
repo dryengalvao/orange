@@ -39,8 +39,19 @@ public class Celula {
 
 	private String horario;
 
-	@OneToMany(mappedBy="celula")
+	@OneToMany(mappedBy = "celula")
 	private Collection<Membro> membros;
+
+	@Column(name = "congregacao_id")
+	private Congregacao congregacao;
+
+	public Congregacao getCongregacao() {
+		return congregacao;
+	}
+
+	public void setCongregacao(Congregacao congregacao) {
+		this.congregacao = congregacao;
+	}
 
 	public int getId() {
 		return id;
@@ -121,18 +132,17 @@ public class Celula {
 	public void setMembros(Collection<Membro> membros) {
 		this.membros = membros;
 	}
-	
+
 	public static Celula jsonToObject(String json) {
-		return new JSONDeserializer<Celula>().
-				use(null, Celula.class).use("membros", ArrayList.class).deserialize(json);
+		return new JSONDeserializer<Celula>().use(null, Celula.class).use("membros", ArrayList.class).deserialize(json);
 	}
-	
+
 	public String objectToJson() {
 		return new JSONSerializer().exclude("*.class").serialize(this);
 	}
-	
+
 	public static String listToJson(List<Celula> celulas) {
 		return new JSONSerializer().exclude("*.class").serialize(celulas);
 	}
-	
+
 }
