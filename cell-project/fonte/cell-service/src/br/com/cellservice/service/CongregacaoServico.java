@@ -1,20 +1,12 @@
 package br.com.cellservice.service;
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import org.codehaus.jettison.json.JSONArray;
-
-import br.com.cellservice.connection.DAOFactory;
-import br.com.cellservice.model.Celula;
-
-@Path("/membro")
-public class MembroServico {
-
+@Path("/congregacao")
+public class CongregacaoServico {
 	@GET
 	@Path("/listar")
 	@Produces("application/json")
@@ -36,17 +28,16 @@ public class MembroServico {
 	}
 	
 	@GET
-	@Path("/atualizar/{membro}")
+	@Path("/atualizar/{congregacao}")
 	@Produces("application/json")
-	public String atualizar(@PathParam("celula") String celula) {
+	public String atualizar(@PathParam("congregacao") String congregacao) {
 		return "";
 	}
 	
 	@GET
-	@Path("/cadastrar/{membro}")
+	@Path("/cadastrar/{congregacao}")
 	@Produces("application/json")
-	public String cadastrar(@PathParam("celula") String celula) {
+	public String cadastrar(@PathParam("congregacao") String congregacao) {
 		return "";
 	}
-	
 }
