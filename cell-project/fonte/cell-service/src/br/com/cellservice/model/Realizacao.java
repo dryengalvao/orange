@@ -2,13 +2,37 @@ package br.com.cellservice.model;
 
 import java.util.Collection;
 
-public class Realizacao {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Realizacao implements AbstractEntity {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@OneToOne
+	@JoinColumn(name = "celula_id")
 	private Celula celula;
+
+	@OneToMany(mappedBy = "realizacao")
 	private Collection<Presenca> presenca;
+
 	private int totalVisitantes;
 	private int totalDecisoes;
 	private String data;
 	private String semana;
+
+	public Long getId() {
+		return id;
+	}
 
 	public Celula getCelula() {
 		return celula;
