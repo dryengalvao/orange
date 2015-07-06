@@ -1,23 +1,9 @@
 package br.com.cellservice.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
-import flexjson.JSONDeserializer;
-import flexjson.JSONSerializer;
-
-@Entity
 public class Realizacao {
-
-	@Column(name = "celula_id")
 	private Celula celula;
-
-	@OneToMany(mappedBy = "realizacao")
 	private Collection<Presenca> presenca;
 	private int totalVisitantes;
 	private int totalDecisoes;
@@ -72,15 +58,4 @@ public class Realizacao {
 		this.semana = semana;
 	}
 
-	public static Realizacao jsonToObject(String json) {
-		return new JSONDeserializer<Realizacao>().use(null, Realizacao.class).use("presenca", ArrayList.class).deserialize(json);
-	}
-
-	public String objectToJson() {
-		return new JSONSerializer().exclude("*.class").serialize(this);
-	}
-
-	public static String listToJson(List<Realizacao> realizacao) {
-		return new JSONSerializer().exclude("*.class").serialize(realizacao);
-	}
 }

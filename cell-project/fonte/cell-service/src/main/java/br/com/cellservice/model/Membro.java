@@ -1,21 +1,18 @@
 package br.com.cellservice.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import flexjson.JSONDeserializer;
-import flexjson.JSONSerializer;
-
 @Entity
 public class Membro {
+	
 	@Id
 	@GeneratedValue
 	private int id;
+	
 	private String nome;
 	private String endereco;
 	private String funcao;
@@ -28,10 +25,11 @@ public class Membro {
 	private boolean consolidacaoPasso5;
 	private boolean consolidacaoPasso6;
 	private boolean consolidacaoPasso7;
-	@ManyToOne
-	@JoinColumn(name = "celula_id")
-	private Celula celula;
 
+	@ManyToOne
+	@JoinColumn(name="celula_id")
+	private Celula celula;
+	
 	public int getId() {
 		return id;
 	}
@@ -136,15 +134,4 @@ public class Membro {
 		this.consolidacaoPasso7 = consolidacaoPasso7;
 	}
 
-	public static Membro jsonToObject(String json) {
-		return new JSONDeserializer<Membro>().use(null, Membro.class).deserialize(json);
-	}
-
-	public String objectToJson() {
-		return new JSONSerializer().exclude("*.class").serialize(this);
-	}
-
-	public static String listToJson(List<Membro> membro) {
-		return new JSONSerializer().exclude("*.class").serialize(membro);
-	}
 }

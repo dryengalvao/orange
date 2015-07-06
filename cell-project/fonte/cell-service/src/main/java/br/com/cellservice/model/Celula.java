@@ -4,63 +4,62 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
 
 @Entity
-public class Celula {
+public class Celula implements AbstractEntity {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 
 	private String nome;
 	private String endereco;
 
-	@Column(name = "lider_id")
+	@OneToOne
+	@JoinColumn(name = "lider_id")
 	private Membro lider;
 
-	@Column(name = "tesoureiro_id")
+	@OneToOne
+	@JoinColumn(name = "tesoureiro_id")
 	private Membro tesoureiro;
 
-	@Column(name = "secretario_id")
+	@OneToOne
+	@JoinColumn(name = "secretario_id")
 	private Membro secretario;
 
-	@Column(name = "anfitriao_id")
+	@OneToOne
+	@JoinColumn(name = "anfitriao_id")
 	private Membro anfitriao;
 
 	private String diaSemana;
 
 	private String horario;
 
-	@OneToMany(mappedBy = "celula")
+	@OneToMany(mappedBy="celula")
 	private Collection<Membro> membros;
 
-	@Column(name = "congregacao_id")
-	private Congregacao congregacao;
-
-	public Congregacao getCongregacao() {
-		return congregacao;
-	}
-
-	public void setCongregacao(Congregacao congregacao) {
-		this.congregacao = congregacao;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
+	public Long getId() {
+		return id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -132,17 +131,17 @@ public class Celula {
 	public void setMembros(Collection<Membro> membros) {
 		this.membros = membros;
 	}
-
+	
 	public static Celula jsonToObject(String json) {
-		return new JSONDeserializer<Celula>().use(null, Celula.class).use("membros", ArrayList.class).deserialize(json);
+		return new JSONDeserializer<Celula>().
+				use(null, Celula.class).use("membros", ArrayList.class).deserialize(json);
 	}
-
+	
 	public String objectToJson() {
 		return new JSONSerializer().exclude("*.class").serialize(this);
 	}
-
+	
 	public static String listToJson(List<Celula> celulas) {
 		return new JSONSerializer().exclude("*.class").serialize(celulas);
 	}
-
 }

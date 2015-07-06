@@ -1,15 +1,16 @@
 package br.com.cellservice.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-
-import flexjson.JSONDeserializer;
-import flexjson.JSONSerializer;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Congregacao {
+	
+	@Id
+	@GeneratedValue
 	private int id;
+	
 	private String nome;
 	private String endereco;
 	private String numero;
@@ -53,18 +54,6 @@ public class Congregacao {
 
 	public void setArea(int area) {
 		this.area = area;
-	}
-
-	public static Congregacao jsonToObject(String json) {
-		return new JSONDeserializer<Congregacao>().use(null, Congregacao.class).deserialize(json);
-	}
-
-	public String objectToJson() {
-		return new JSONSerializer().exclude("*.class").serialize(this);
-	}
-
-	public static String listToJson(List<Congregacao> congregacao) {
-		return new JSONSerializer().exclude("*.class").serialize(congregacao);
 	}
 
 }
