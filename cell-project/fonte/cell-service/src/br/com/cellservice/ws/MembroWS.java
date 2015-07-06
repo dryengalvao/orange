@@ -1,12 +1,13 @@
-package br.com.cellservice.service;
+package br.com.cellservice.ws;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-@Path("/presenca")
-public class PresencaServico {
+@Path("/membro")
+public class MembroWS {
+
 	@GET
 	@Path("/listar")
 	@Produces("application/json")
@@ -28,16 +29,17 @@ public class PresencaServico {
 	}
 	
 	@GET
-	@Path("/atualizar/{presenca}")
+	@Path("/atualizar/{membro}")
 	@Produces("application/json")
-	public String atualizar(@PathParam("presenca") String presenca) {
+	public String atualizar(@PathParam("celula") String celula) {
 		return "";
 	}
 	
 	@GET
-	@Path("/cadastrar/{presenca}")
+	@Path("/cadastrar/{membro}")
 	@Produces("application/json")
-	public String cadastrar(@PathParam("presenca") String presenca) {
+	public String cadastrar(@PathParam("celula") String celula) {
 		return "";
 	}
+	
 }

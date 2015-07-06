@@ -8,9 +8,11 @@ import javax.persistence.PersistenceContext;
 
 import br.com.cellservice.model.Celula;
 
+
 @Stateless
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class CelulaDAO extends AbstractPersistence<Celula, Long> {
+	
 	
 	public CelulaDAO() {
 		super(Celula.class);

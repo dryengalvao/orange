@@ -5,6 +5,7 @@ import javax.persistence.Persistence;
 
 import br.com.cellservice.model.Congregacao;
 
+
 public class TesteJPA {
 
 	public static void main(String[] args) {

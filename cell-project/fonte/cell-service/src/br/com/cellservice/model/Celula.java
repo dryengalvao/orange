@@ -56,6 +56,7 @@ public class Celula implements AbstractEntity {
 		this.id = id;
 	}
 	
+	@Override
 	public Long getId() {
 		return id;
 	}

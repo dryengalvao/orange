@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import br.com.cellservice.dao.CelulaDAO;
 import br.com.cellservice.model.Celula;
 
+
 public class CelulaServicoImpl implements CelulaServico {
 
 	@EJB

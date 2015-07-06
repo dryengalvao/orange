@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import br.com.cellservice.model.Celula;
 
+
 @Local
 public interface CelulaServico {
 

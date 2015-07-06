@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import br.com.cellservice.model.Celula;
 import br.com.cellservice.service.CelulaServico;
 
+
 @Path("celula")
 public class CelulaWS {
 
