@@ -4,6 +4,11 @@
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>cell-service</display-name>
 
+	<!-- Weld -->
+	<listener>
+		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+	
 	<!-- Resteasy -->
 	<servlet>
 		<servlet-name>RestServlet</servlet-name>
@@ -22,11 +27,6 @@
 		<servlet-name>RestServlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
-	
-	<!-- Weld -->
-	<listener>
-		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
-	</listener>
 	
 	<resource-env-ref>
 		<resource-env-ref-name>BeanManager</resource-env-ref-name>
